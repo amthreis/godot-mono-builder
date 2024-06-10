@@ -1,0 +1,10 @@
+services:
+  gmb:
+    image: amthreis/godot-mono-builder:4.2.2
+    build:
+      dockerfile: Dockerfile
+      args:
+        - GODOT_VERSION=4.2.2
+        - DOTNET_VERSION=8.0
+      context: .
+    tty: true

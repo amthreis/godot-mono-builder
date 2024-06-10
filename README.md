@@ -1,0 +1,1 @@
+Image with official Linux headless builds of Godot 4.x, used to automate Godot Engine builds. The engine is located at /bin/godot and the templates are installed in /root/.local/share/godot/templates.
