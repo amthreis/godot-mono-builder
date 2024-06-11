@@ -1,0 +1,24 @@
+ARG GODOT_VERSION
+
+FROM amthreis/godot-mono-builder:${GODOT_VERSION} as build
+
+ARG NAME
+ENV NAME=${NAME}
+
+WORKDIR /src
+
+#considering your Dockerfile is located at the root of your Godot project
+COPY . .
+
+RUN mkdir dist && godot --headless --path . --export-release "Linux/X11" ./dist/${NAME}.x86_64
+
+FROM ubuntu
+
+ARG NAME
+ENV NAME=${NAME}
+
+WORKDIR /app
+
+COPY --from=build /src/dist .
+
+CMD ./${NAME}.x86_64 --headless

@@ -1,0 +1,10 @@
+services:
+  gmb:
+    image: my_game_image
+    build:
+      dockerfile: Dockerfile.example
+      args:
+        - NAME=my_game
+        - GODOT_VERSION=4.2.2
+      context: .
+    tty: true
